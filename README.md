@@ -1,9 +1,7 @@
-# DATASCIENCE PROJECT TEMPLATE
+# SUBGLACIAL DISCHARGE PROJECT 
 ## Project description
-When this is cloned into a new project, make sure to replace THIS `Project description` with a description of the actual project!
+This repository contains all the analysis code for my subglacial discharge project. Please contact me before using anything from this repo.
 
-## Template description
-This is my attempt at formulating a repeatable, standard data science project structure. I have perosnalised it to fit the kind of science that I do. It is subject to change as my needs evolve.
 
 Current structure follows this form:
 
