@@ -1,0 +1,10 @@
+#silly mac files
+.DS_Store
+
+# big files
+*.nc
+*.avi
+*.mat
+
+# output files
+*.png
