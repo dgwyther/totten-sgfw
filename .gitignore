@@ -5,6 +5,7 @@
 *.nc
 *.avi
 *.mat
+*.m4v
 
 # output files
 *.png

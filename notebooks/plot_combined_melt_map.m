@@ -35,6 +35,11 @@ field_neg = field; field_neg(field_neg>0)=NaN;
 meanpos=nanmean(field_pos(:));
 meanneg=nanmean(field_neg(:));
 
+% apres results
+apres_x = 2272.5;
+apres_y = -1029.5;
+apres_m = 22;
+
  % load Gourmelen results
 
 GourmelenFile='../data/raw/TottenBasalMeltRates.tif';
@@ -62,7 +67,7 @@ group_axis=[2.22e6 2.33e6 -1.17e6 -9.85e5]/1000;
 group_caxis=[-10 80];
 imm_caxis=[13000 17000];
 
-subaxis(1,3,1)%,'MT',0.03,'MB',0.06)
+subaxis(1,3,2)%,'MT',0.03,'MB',0.06)
 ax1=gca;
 flat_pcolor(xm/1000,ym/1000,imm), axis equal
 ylabel('Northings (km)')
@@ -84,20 +89,17 @@ contour(NoFlow_coords.x,NoFlow_coords.y,NoFlow_geom.zice,[-1:1:0],'linewidth',1,
 grid on
 ylabel('Northings (km)')
 xlabel('Eastings (km)')
-ntitle(' a  ROMS','location','northwest','fontweight','bold', 'fontsize',14),ntitle([num2str(round(nanmean(NoFlow.my),1)),' m/yr '],'location','northeast')
+ntitle(' b  ROMS','location','northwest','fontweight','bold', 'fontsize',14),ntitle([num2str(round(nanmean(NoFlow.my),1)),' m/yr '],'location','northeast','fontsize',12)
 axis equal
 axis(group_axis)
 grid on
 set(gca,'layer','top')
 caxis(group_caxis)
 cmocean('curl','pivot',0)
-text(2240,-1147,{'eastern','channel'})
-text(2299,-1042,{'Law Dome'})
-text(2295,-1145,{'calving front'})
-text(2245,-999,{'grounding','line'})
-plot(2276.5,-1022.5,'ko','markersize',4,'linewidth',6)
 
-subaxis(1,3,2)
+% scatter(apres_x,apres_y,120,apres_m,'filled','o','markeredgecolor','k','linewidth',1)
+
+subaxis(1,3,1)
 ax1=gca;
 flat_pcolor(xm/1000,ym/1000,imm), axis equal
 xlabel('Eastings (km)')
@@ -113,7 +115,7 @@ ax2.Color='none'
 colormap(ax1,'gray')
 set(ax2,'position',get(ax1,'pos'))
 caxis(ax1,imm_caxis)
-ntitle(' b  Satellite','location','northwest','fontweight','bold', 'fontsize',14),ntitle([num2str(round(nanmean(melt(:)),0)),' m/yr '],'location','northeast')
+ntitle(' a  Satellite + APRES','location','northwest','fontweight','bold', 'fontsize',14),ntitle([num2str(round(nanmean(melt(:)),0)),' m/yr '],'location','northeast','fontsize',12)
 xlabel('Eastings (km)')
 axis(group_axis)
 grid on
@@ -123,6 +125,11 @@ caxis(group_caxis)
 cmocean('curl','pivot',0)
 axis equal
 axis(group_axis)
+hold on,scatter(apres_x,apres_y,120,apres_m,'filled','o','markeredgecolor','k','linewidth',1)
+text(2240,-1147,{'Eastern','channel'},'fontsize',12)
+text(2310,-1070,{'Law','Dome'},'fontsize',12)
+text(2295,-1143,{'Calving front'},'fontsize',12)
+text(2245,-1004,{'Grounding','line'},'fontsize',12)
 
 subaxis(1,3,3)
 ax1=gca;
@@ -148,7 +155,7 @@ grid on
 set(gca,'layer','top')
 caxis([-10 10]),cmocean('balance','pivot',0)
 ntitle(' c  ROMS with/without SGFW','location','northwest','fontweight','bold', 'fontsize',14)
-ntitle({[' '],[' '],['total change: ',num2str(round((nanmean(Norm.my./NoFlow.my)-1)*100,1)),'% '],['mean inc.: ',num2str(round(meanpos,1)),'% '],['mean dec.: ',num2str(round(meanneg,1)),'% ']},'location','northeast')
+ntitle({[' '],['total change: ',num2str(round((nanmean(Norm.my./NoFlow.my)-1)*100,1)),'% '],['mean inc.: ',num2str(round(meanpos,1)),'% '],['mean dec.: ',num2str(round(meanneg,1)),'% ']},'location','northeast','fontsize',12)
 h_cb = colorbar;
 title(h_cb,'% diff to no flow')
 xlabel('Eastings (km)')
