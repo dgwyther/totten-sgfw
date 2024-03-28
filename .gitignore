@@ -9,3 +9,9 @@
 
 # output files
 *.png
+data/
+src/
+
+#other notebook stuff
+notebooks/.ipynb_checkpoints/
+tisom017_sgfw.code-workspace
